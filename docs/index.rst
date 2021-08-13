@@ -17,7 +17,7 @@ Helm uses a packaging format called charts. Charts are a collection of YAML
 templates that describe a related set of Kubernetes resources.
 
 This repository provides Helm charts for the following Confluent
-Platform services:
+services:
 
 -  Kafka brokers
 -  ZooKeeper
@@ -37,7 +37,7 @@ These Helm charts have been tested with the following software versions:
 
 -  `Kubernetes <https://kubernetes.io/>`__ 1.9.2+
 -  `Helm <https://helm.sh/>`__ 2.8.2+
--  `Confluent Platform Open Source Docker
+-  `Confluent Open Source Docker
    Images <https://hub.docker.com/u/confluentinc/>`__ |release|
 
 For local Kubernetes installation with Minikube, see :ref:`create-local-minikube`.
@@ -77,7 +77,7 @@ Follow these steps to run |cp|.
 
 Persistence
 ~~~~~~~~~~~
-The ZooKeeper and Kafka cluster are deployed with ``StatefulSets`` that have a ``volumeClaimTemplate`` which provides the persistent volume for each replica. You can define the size of the volumes by changing ``dataDirSize`` and ``dataLogDirSize`` under ``cp-zookeeper`` and ``size`` under  ``cp-kafka`` in `values.yaml. <https://github.com/confluentinc/cp-helm-charts/blob/master/values.yaml>`__
+The ZooKeeper and Kafka cluster are deployed with ``StatefulSets`` that have a ``volumeClaimTemplate`` which provides the persistent volume for each replica. You can define the size of the volumes by changing ``dataDirSize`` and ``dataLogDirSize`` under ``cp-zookeeper`` and ``size`` under  ``cp-kafka`` in `values.yaml. <https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/values.yaml>`__
 
 You also could use the cloud provider's volumes by specifying `StorageClass <https://kubernetes.io/docs/concepts/storage/storage-classes/>`__.. For example, if you are on AWS your storage class will look like this:
 
@@ -93,9 +93,9 @@ You also could use the cloud provider's volumes by specifying `StorageClass <htt
 
 .. tip:: To adapt this example to your needs, read the Kubernetes `StorageClass <https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters>`__ documentation.
 
-The ``StorageClass`` that was created can be specified in ``dataLogDirStorageClass`` and ``dataDirStorageClass`` under ``cp-zookeeper`` and in ``storageClass`` under ``cp-kafka`` in `values.yaml <https://github.com/confluentinc/cp-helm-charts/blob/master/values.yaml>`__.
+The ``StorageClass`` that was created can be specified in ``dataLogDirStorageClass`` and ``dataDirStorageClass`` under ``cp-zookeeper`` and in ``storageClass`` under ``cp-kafka`` in `values.yaml <https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/values.yaml>`__.
 
-To deploy non-persistent Kafka and ZooKeeper clusters, you must change the value of ``persistence.enabled`` under ``cp-kafka`` and ``cp-zookeeper`` in `values.yaml <https://github.com/confluentinc/cp-helm-charts/blob/master/values.yaml>`__ . These type of clusters are suitable for development and testing purposes. The ``StatefulSets`` are going to use ``emptyDir`` volumes, this means that its content is strictly related to the pod life cycle and is deleted when the pod goes down.
+To deploy non-persistent Kafka and ZooKeeper clusters, you must change the value of ``persistence.enabled`` under ``cp-kafka`` and ``cp-zookeeper`` in `values.yaml <https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/values.yaml>`__ . These type of clusters are suitable for development and testing purposes. The ``StatefulSets`` are going to use ``emptyDir`` volumes, this means that its content is strictly related to the pod life cycle and is deleted when the pod goes down.
 
 Install cp-helm-charts
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -104,13 +104,13 @@ Clone the Confluent Helm Chart repo
 
 .. code:: sh
 
-      > helm repo add confluentinc https://confluentinc.github.io/cp-helm-charts/
-    "confluentinc" has been added to your repositories
+      > helm repo add confluent-community https://confluent-helm-charts.github.io/cp-helm-charts/
+    "confluent-community" has been added to your repositories
 
       > helm repo update
     Hang tight while we grab the latest from your chart repositories...
     ...Skip local chart repository
-    ...Successfully got an update from the "confluentinc" chart repository
+    ...Successfully got an update from the "confluent-community" chart repository
     ...Successfully got an update from the "stable" chart repository
     Update Complete. ⎈ Happy Helming!⎈
 
@@ -122,14 +122,14 @@ in the remainder of the documentation.
 
 .. code:: sh
 
-      helm install confluentinc/cp-helm-charts --name my-confluent-oss
+      helm install confluent-community/cp-helm-charts --name my-confluent-oss
 
 If you want to install without the Confluent Schema Registry instance,
 the REST Proxy instance, and the Kafka Connect worker:
 
 .. code:: sh
 
-      helm install --set cp-schema-registry.enabled=false,cp-kafka-rest.enabled=false,cp-kafka-connect.enabled=false confluentinc/cp-helm-charts
+      helm install --set cp-schema-registry.enabled=false,cp-kafka-rest.enabled=false,cp-kafka-connect.enabled=false confluent-community/cp-helm-charts
 
 View the installed Helm releases:
 
@@ -200,7 +200,7 @@ Manual Test
 
    ::
 
-    git clone https://github.com/confluentinc/cp-helm-charts.git
+    git clone https://github.com/confluent-helm-charts/cp-helm-charts.git
 
 1. Deploy a |zk| client pod.
 
@@ -254,7 +254,7 @@ Run A Streams Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have |cp| running in your Kubernetes cluster,
-you may run a `KSQL example <https://github.com/confluentinc/cp-helm-charts/blob/master/examples/ksql-demo.yaml>`__. KSQL is the
+you may run a `KSQL example <https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/examples/ksql-demo.yaml>`__. KSQL is the
 streaming SQL engine that enables real-time data processing against
 Apache Kafka.
 
@@ -337,7 +337,7 @@ Exporter is installed as a sidecar container along with all Pods.
 2. Add Prometheus as Data Source in Grafana, url should be something
    like: ``http://illmannered-marmot-prometheus-server:9090``
 
-3. Import dashboard under `grafana-dashboard <https://github.com/confluentinc/cp-helm-charts/blob/master/grafana-dashboard/confluent-open-source-grafana-dashboard.json>`__ into
+3. Import dashboard under `grafana-dashboard <https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/grafana-dashboard/confluent-open-source-grafana-dashboard.json>`__ into
    Grafana |Kafka Dashboard|
 
    .. figure:: ../screenshots/zookeeper.png

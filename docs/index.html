@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.12">
-<title>Confluent Platform Helm Charts</title>
+<title>Confluent Helm Charts</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -652,7 +652,7 @@ pre.rouge {
 </head>
 <body class="article">
 <div id="header">
-<h1>Confluent Platform Helm Charts</h1>
+<h1>Confluent Helm Charts</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -673,7 +673,7 @@ Open Source Helm charts are not supported by Confluent.
 </table>
 </div>
 <div class="paragraph">
-<p><strong>If you want to use Confluent Platform on Kubernetes in a test or production environment, follow these instructions to install <a href="https://docs.confluent.io/current/installation/operator/index.html#operator-about-intro">Confluent Operator</a>.</strong></p>
+<p><strong>If you want to use Confluent on Kubernetes in a test or production environment, follow these instructions to install <a href="https://docs.confluent.io/operator/current/overview.html">Confluent for Kubernetes</a>.</strong></p>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of content</div>
@@ -689,7 +689,7 @@ Open Source Helm charts are not supported by Confluent.
 </ul>
 </li>
 <li><a href="#persistence">Persistence</a></li>
-<li><a href="#install-confluent-platform-charts">Install Confluent Platform Charts</a></li>
+<li><a href="#install-confluent-platform-charts">Install Confluent Charts</a></li>
 <li><a href="#verify-installation">Verify Installation</a>
 <ul class="sectlevel3">
 <li><a href="#using-helm">Using Helm</a></li>
@@ -722,7 +722,7 @@ Open Source Helm charts are not supported by Confluent.
 </ul>
 </div>
 <div class="paragraph">
-<p>The <a href="https://github.com/confluentinc/cp-helm-charts">Confluent Platform Helm Charts</a> enable you to deploy Confluent Platform components on Kubernetes for development, test, and proof of concept environments.</p>
+<p>The <a href="https://github.com/confluent-helm-charts/cp-helm-charts">Confluent Helm Charts</a> enable you to deploy Confluent components on Kubernetes for development, test, and proof of concept environments.</p>
 </div>
 </div>
 </div>
@@ -732,16 +732,16 @@ Open Source Helm charts are not supported by Confluent.
 <div class="listingblock">
 <div class="title">Installing helm chart</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">helm repo add confluentinc https://confluentinc.github.io/cp-helm-charts/   <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="bash">helm repo add confluent-community https://confluent-helm-charts.github.io/cp-helm-charts/   <i class="conum" data-value="1"></i><b>(1)</b>
 helm repo update    <i class="conum" data-value="2"></i><b>(2)</b>
-helm <span class="nb">install </span>confluentinc/cp-helm-charts <span class="nt">--name</span> my-confluent <span class="nt">--version</span> 0.6.0    <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+helm <span class="nb">install </span>confluent-community/cp-helm-charts <span class="nt">--name</span> my-confluent <span class="nt">--version</span> 0.6.0    <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Add <code>confluentinc</code> helm charts repo</td>
+<td>Add <code>confluent-community</code> helm charts repo</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -749,7 +749,7 @@ helm <span class="nb">install </span>confluentinc/cp-helm-charts <span class="nt
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Install Confluent Platform with release name «my-confluent» and version <code>0.6.0</code></td>
+<td>Install Confluent with release name «my-confluent» and version <code>0.6.0</code></td>
 </tr>
 </table>
 </div>
@@ -776,7 +776,7 @@ It&#8217;s not officially supported repo, hence support is on <em>"best effort"<
 <div class="ulist">
 <ul>
 <li>
-<p>Report all enhancements, bugs, and tasks as <a href="https://github.com/confluentinc/cp-helm-charts/issues">GitHub issues</a></p>
+<p>Report all enhancements, bugs, and tasks as <a href="https://github.com/confluent-helm-charts/cp-helm-charts/issues">GitHub issues</a></p>
 </li>
 <li>
 <p>Provide fixes or enhancements by opening pull requests in GitHub</p>
@@ -795,7 +795,7 @@ Charts are a collection of YAML templates that describe a related set of Kuberne
 </div>
 <div class="paragraph">
 <p>This repository provides Helm charts for the following Confluent
-Platform services:</p>
+services:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -841,7 +841,7 @@ Platform services:</p>
 <p><a href="https://helm.sh/">Helm</a> 2.8.2+</p>
 </li>
 <li>
-<p><a href="https://hub.docker.com/u/confluentinc/">Confluent Platform Docker Images</a></p>
+<p><a href="https://hub.docker.com/u/confluentinc/">Confluent Docker Images</a></p>
 </li>
 </ul>
 </div>
@@ -905,7 +905,7 @@ helm init <span class="nt">--service-account</span> tiller <span class="nt">--up
 <h3 id="persistence"><a class="anchor" href="#persistence"></a>Persistence</h3>
 <div class="paragraph">
 <p>The ZooKeeper and Kafka cluster deployed with <code>StatefulSets</code> that have a <code>volumeClaimTemplate</code> which provides the persistent volume for each replica.
-You can define the size of the volumes by changing <code>dataDirSize</code> and <code>dataLogDirSize</code> under <code>cp-zookeeper</code> and <code>size</code> under <code>cp-kafka</code> in <a href="https://github.com/confluentinc/cp-helm-charts/blob/master/values.yaml">values.yaml</a>.</p>
+You can define the size of the volumes by changing <code>dataDirSize</code> and <code>dataLogDirSize</code> under <code>cp-zookeeper</code> and <code>size</code> under <code>cp-kafka</code> in <a href="https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/values.yaml">values.yaml</a>.</p>
 </div>
 <div class="paragraph">
 <p>You also could use the cloud provider&#8217;s volumes by specifying <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">StorageClass</a>.
@@ -935,10 +935,10 @@ To adapt this example to your needs, read the Kubernetes <a href="https://kubern
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>StorageClass</code> that was created can be specified in <code>dataLogDirStorageClass</code> and <code>dataDirStorageClass</code> under <code>cp-zookeeper</code> and in <code>storageClass+</code> under <code>cp-kafka</code> in <a href="https://github.com/confluentinc/cp-helm-charts/blob/master/values.yaml">values.yaml</a>.</p>
+<p>The <code>StorageClass</code> that was created can be specified in <code>dataLogDirStorageClass</code> and <code>dataDirStorageClass</code> under <code>cp-zookeeper</code> and in <code>storageClass+</code> under <code>cp-kafka</code> in <a href="https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/values.yaml">values.yaml</a>.</p>
 </div>
 <div class="paragraph">
-<p>To deploy non-persistent Kafka and ZooKeeper clusters, you must change  the value of <code>persistence.enabled</code> under <code>cp-kafka</code> and <code>cp-zookeeper</code> in <a href="https://github.com/confluentinc/cp-helm-charts/blob/master/values.yaml">values.yaml</a></p>
+<p>To deploy non-persistent Kafka and ZooKeeper clusters, you must change  the value of <code>persistence.enabled</code> under <code>cp-kafka</code> and <code>cp-zookeeper</code> in <a href="https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/values.yaml">values.yaml</a></p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -955,19 +955,19 @@ The <code>StatefulSets+</code> are going to use <code>emptyDir</code> volumes, t
 </div>
 </div>
 <div class="sect2">
-<h3 id="install-confluent-platform-charts"><a class="anchor" href="#install-confluent-platform-charts"></a>Install Confluent Platform Charts</h3>
+<h3 id="install-confluent-platform-charts"><a class="anchor" href="#install-confluent-platform-charts"></a>Install Confluent Charts</h3>
 <div class="paragraph">
 <p>Clone the Confluent Helm Chart repo</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span> helm repo add confluentinc https://confluentinc.github.io/cp-helm-charts/
-<span class="s2">"confluentinc"</span> has been added to your repositories
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span> helm repo add confluent-community https://confluent-helm-charts.github.io/cp-helm-charts/
+<span class="s2">"confluent-community"</span> has been added to your repositories
 
 <span class="o">&gt;</span> helm repo update
 Hang tight <span class="k">while </span>we grab the latest from your chart repositories...
 ...Skip <span class="nb">local </span>chart repository
-...Successfully got an update from the <span class="s2">"confluentinc"</span> chart repository
+...Successfully got an update from the <span class="s2">"confluent-community"</span> chart repository
 ...Successfully got an update from the <span class="s2">"stable"</span> chart repository
 Update Complete. ⎈ Happy Helming!⎈</code></pre>
 </div>
@@ -990,7 +990,7 @@ Otherwise, helm will generate release name.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">helm <span class="nb">install </span>confluentinc/cp-helm-charts <span class="nt">--name</span> my-confluent-oss</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">helm <span class="nb">install </span>confluent-community/cp-helm-charts <span class="nt">--name</span> my-confluent-oss</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -998,7 +998,7 @@ Otherwise, helm will generate release name.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">helm <span class="nb">install</span> <span class="nt">--set</span> cp-schema-registry.enabled<span class="o">=</span><span class="nb">false</span>,cp-kafka-rest.enabled<span class="o">=</span><span class="nb">false</span>,cp-kafka-connect.enabled<span class="o">=</span><span class="nb">false </span>confluentinc/cp-helm-charts</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">helm <span class="nb">install</span> <span class="nt">--set</span> cp-schema-registry.enabled<span class="o">=</span><span class="nb">false</span>,cp-kafka-rest.enabled<span class="o">=</span><span class="nb">false</span>,cp-kafka-connect.enabled<span class="o">=</span><span class="nb">false </span>confluent-community/cp-helm-charts</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1099,7 +1099,7 @@ Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>C</kbd></span> to stop consuming
 <h5 id="zookeepers"><a class="anchor" href="#zookeepers"></a>Zookeepers</h5>
 <div class="listingblock">
 <div class="content">
-<pre>git clone https://github.com/confluentinc/cp-helm-charts.git        <i class="conum" data-value="1"></i><b>(1)</b>
+<pre>git clone https://github.com/confluent-helm-charts/cp-helm-charts.git        <i class="conum" data-value="1"></i><b>(1)</b>
 kubectl apply -f cp-helm-charts/examples/zookeeper-client.yaml      <i class="conum" data-value="2"></i><b>(2)</b>
 ...
 kubectl exec -it zookeeper-client -- /bin/bash zookeeper-shell &lt;zookeeper service&gt;:&lt;port&gt; ls /brokers/ids       <i class="conum" data-value="3"></i><b>(3)</b>
@@ -1173,7 +1173,7 @@ kafka-consumer-perf-test <span class="nt">--broker-list</span> <span class="nv">
 <h4 id="run-a-streams-application"><a class="anchor" href="#run-a-streams-application"></a>Run A Streams Application</h4>
 <div class="paragraph">
 <p>ksqlDB is the streaming SQL engine that enables real-time data  processing against Apache Kafka.
-Now that you have running in your Kubernetes cluster, you may run a <a href="https://github.com/confluentinc/cp-helm-charts/blob/master/examples/ksql-demo.yaml">ksqlDB example</a>.</p>
+Now that you have running in your Kubernetes cluster, you may run a <a href="https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/examples/ksql-demo.yaml">ksqlDB example</a>.</p>
 </div>
 </div>
 </div>
@@ -1280,7 +1280,7 @@ helm <span class="nb">install </span>stable/grafana</code></pre>
 <p>Add Prometheus as Data Source in Grafana, url should be something  like: <code>http://illmannered-marmot-prometheus-server:9090</code></p>
 </li>
 <li>
-<p>Import dashboard under <a href="https://github.com/confluentinc/cp-helm-charts/blob/master/grafana-dashboard/confluent-open-source-grafana-dashboard.json">grafana-dashboard</a> into Grafana <span class="image"><img src="screenshots/kafka.png" alt="Kafka Dashboard"></span>
+<p>Import dashboard under <a href="https://github.com/confluent-helm-charts/cp-helm-charts/blob/master/grafana-dashboard/confluent-open-source-grafana-dashboard.json">grafana-dashboard</a> into Grafana <span class="image"><img src="screenshots/kafka.png" alt="Kafka Dashboard"></span>
 <span class="image"><img src="screenshots/zookeeper.png" alt="ZooKeeper Dashboard"></span></p>
 </li>
 </ol>
