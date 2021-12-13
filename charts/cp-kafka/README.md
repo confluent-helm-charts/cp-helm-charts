@@ -112,13 +112,13 @@ The configuration parameters in this section control the resources requested and
 
 ### Image
 
-| Parameter | Description | Default |
-| --------- | ----------- | ------- |
-| `image` | Docker Image of Confluent Kafka. | `confluentinc/cp-enterprise-kafka` |
-| `imageTag` | Docker Image Tag of Confluent Kafka. | `6.2.1` |
-| `imagePullPolicy` | Docker Image Tag of Confluent Kafka. | `IfNotPresent` |
-| `imagePullSecrets` | Secrets to be used for private registries. | see [values.yaml](values.yaml) for details |
-| `enableEnterpriseFeatures` | If this flag is set to `true`, Kafka image will be set to `confluentinc/cp-enterprise-kafka` otherwise it will be set to `confluentinc/cp-kafka` (Community version). It can still be overridden in `values.yaml`. | `true`
+| Parameter | Description                                                                                                                                                                                              | Default                                    |
+| --------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| `image` | Docker Image of Confluent Kafka.                                                                                                                                                                         | `confluentinc/cp-server`                   |
+| `imageTag` | Docker Image Tag of Confluent Kafka.                                                                                                                                                                     | `6.2.1`                                    |
+| `imagePullPolicy` | Docker Image Tag of Confluent Kafka.                                                                                                                                                                     | `IfNotPresent`                             |
+| `imagePullSecrets` | Secrets to be used for private registries.                                                                                                                                                               | see [values.yaml](values.yaml) for details |
+| `enableEnterpriseFeatures` | If this flag is set to `true`, Kafka image will be set to `confluentinc/cp-server` otherwise it will be set to `confluentinc/cp-kafka` (Community version). It can still be overridden in `values.yaml`. | `true`                                     
 
 ### StatefulSet Configurations
 

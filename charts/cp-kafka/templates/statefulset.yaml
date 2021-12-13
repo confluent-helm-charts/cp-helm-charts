@@ -86,7 +86,7 @@ spec:
         {{- if .Values.image }}
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
         {{- else if .Values.enableEnterpriseFeatures }}
-        image: "confluentinc/cp-enterprise-kafka:{{ .Values.imageTag }}"
+        image: "confluentinc/cp-server:{{ .Values.imageTag }}"
         {{- else }}
         image: "confluentinc/cp-kafka:{{ .Values.imageTag }}"
         {{- end }}
