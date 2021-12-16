@@ -39,8 +39,11 @@ heapOptions: "-Xms512M -Xmx512M"
 
 ## Additional env variables
 ## CUSTOM_SCRIPT_PATH is the path of the custom shell script to be ran mounted in a volume
+## CUSTOM_SCRIPT_PATH_PRE_RUN is the path of the custom shell script to be run before kafka connect
+##   and to be ran mounted in a volume
 customEnv: {}
   # CUSTOM_SCRIPT_PATH: /etc/scripts/create-connectors.sh
+  # CUSTOM_SCRIPT_PATH_PRE_RUN: /etc/scripts/install-connectors.sh
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

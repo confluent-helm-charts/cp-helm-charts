@@ -107,6 +107,9 @@ spec:
             - /bin/bash
             - -c
             - |
+              {{- if .Values.customEnv.CUSTOM_SCRIPT_PATH_PRE_RUN }}
+              $CUSTOM_SCRIPT_PATH_PRE_RUN
+              {{- end }}
               /etc/confluent/docker/run &
               $CUSTOM_SCRIPT_PATH
               sleep infinity
