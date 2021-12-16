@@ -3,6 +3,8 @@
 
 # TODO: change this to use https://github.com/kcctl/kcctl
 echo "Waiting for Kafka Connect to start listening on kafka-connect  "
+TIMEOUT="${CONNECT_CUB_KAFKA_TIMEOUT:-40}"
+start_time=$(date +%s)
 while :; do
     # Check if the connector endpoint is ready
     # If not check again
@@ -15,6 +17,11 @@ while :; do
     # shellcheck disable=SC2086
     if [ $curl_status -eq 200 ]; then
         break
+    fi
+    end_time=$(date +%s)
+    elapsed=$(( end_time - start_time ))
+    if [ "$elapsed" -gt "$TIMEOUT" ]; then
+      exit 1
     fi
     sleep 5
 done
@@ -36,3 +43,5 @@ curl -X POST \
         "poll.interval.ms": 1000
         }
     }' http://"$CONNECT_REST_ADVERTISED_HOST_NAME":8083/connectors
+
+sleep infinity
