@@ -1,0 +1,44 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  
+  lint-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Lint Scripts with Shellcheck
+        uses: ludeeus/action-shellcheck@master
+  
+  lint-charts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Lint Helm Charts
+        uses: addnab/docker-run-action@v3
+        with:
+          image: quay.io/helmpack/chart-testing:v3.1.1
+          options: -v ${{ github.workspace }}:/work
+          run: |
+            echo "Running Chart Testing..."
+            ct lint --config /work/ci/ct.yaml
+  
+  test-in-kind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: E2e with Kind
+        run: ci/e2e-kind.sh
+        

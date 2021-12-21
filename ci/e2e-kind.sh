@@ -5,10 +5,10 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-readonly KIND_VERSION=v0.9.0
+readonly KIND_VERSION=v0.11.1
 readonly CLUSTER_NAME=chart-testing
 readonly K8S_VERSION=v1.18.0
-readonly CT_VERSION=v3.1.1
+readonly CT_VERSION=v3.4.0
 
 output(){
     echo ""
