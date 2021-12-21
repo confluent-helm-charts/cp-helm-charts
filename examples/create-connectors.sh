@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 ## A script similar to this can be used to create connectors making sure the endpoints are ready
 
 echo "Waiting for Kafka Connect to start listening on kafka-connect  "
