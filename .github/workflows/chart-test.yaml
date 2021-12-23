@@ -13,6 +13,8 @@ jobs:
 
       - name: Lint Scripts with Shellcheck
         uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -x -S warning
   
   lint-test:
     runs-on: ubuntu-latest
