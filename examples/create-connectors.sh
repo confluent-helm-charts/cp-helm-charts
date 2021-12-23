@@ -1,11 +1,18 @@
+#!/usr/bin/env sh
 ## A script similar to this can be used to create connectors making sure the endpoints are ready
 
+# TODO: change this to use https://github.com/kcctl/kcctl
 echo "Waiting for Kafka Connect to start listening on kafka-connect  "
 while :; do
     # Check if the connector endpoint is ready
     # If not check again
+    # shellcheck disable=SC1083
     curl_status=$(curl -s -o /dev/null -w %{http_code} http://localhost:{{ .Values.servicePort }}/connectors)
-    echo -e $(date) "Kafka Connect listener HTTP state: " $curl_status " (waiting for 200)"
+    # shellcheck disable=SC2039
+    # shellcheck disable=SC2046
+    # shellcheck disable=SC3037
+    echo -e $(date) "Kafka Connect listener HTTP state: $curl_status (waiting for 200)"
+    # shellcheck disable=SC2086
     if [ $curl_status -eq 200 ]; then
         break
     fi
@@ -28,4 +35,4 @@ curl -X POST \
         "topic.prefix": "sample-connector-",
         "poll.interval.ms": 1000
         }
-    }' http://$CONNECT_REST_ADVERTISED_HOST_NAME:8083/connectors
+    }' http://"$CONNECT_REST_ADVERTISED_HOST_NAME":8083/connectors
