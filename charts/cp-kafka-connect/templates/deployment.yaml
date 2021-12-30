@@ -102,6 +102,14 @@ spec:
             - name: KAFKA_JMX_PORT
               value: "{{ .Values.jmx.port }}"
             {{- end }}
+            {{- $secretName := (include "cp-kafka-connect.fullname" .) -}}
+            {{- range $key,$value := .Values.envFromSecrets }}
+            - name: {{$key | quote}}
+              valueFrom:
+                  secretKeyRef:
+                    name: {{ $secretName }}
+                    key: {{ $value.key | quote }}
+            {{- end }}
         {{- if .Values.customEnv.CUSTOM_SCRIPT_PATH }}
           command:
             - /bin/bash

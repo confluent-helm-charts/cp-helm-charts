@@ -121,6 +121,16 @@ secrets:
   # username: kafka123
   # password: connect321
 
+## Environment variables from previously created Secret resource.
+## Take the example secret from above with 2 properties (username & password
+## Creates 2 environment variables (USER & PASSWORD) with the respective content from the secret.
+envFromSecrets:
+#  USER:
+#    key: username
+#  PASSWORD:
+#    key: password
+
+
 ## These values are used only when "customEnv.CUSTOM_SCRIPT_PATH" is defined.
 ## "livenessProbe" is required only for the edge cases where the custom script to be ran takes too much time
 ## and errors by the ENTRYPOINT are ignored by the container

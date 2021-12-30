@@ -122,6 +122,7 @@ The configuration parameters in this section control the resources requested and
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
 | `secrets` | Secret with one or more `key:value` pairs | see [values.yaml](values.yaml) for details |
+| `envFromSecrets` | Secrets injected as environment variables | see [values.yaml](values.yaml) for details |
 
 ### Kafka Connect JVM Heap Options
 
