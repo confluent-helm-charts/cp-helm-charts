@@ -104,6 +104,7 @@ The configuration parameters in this section control the resources requested and
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
 | `configurationOverrides` | Schema Registry [configuration](https://docs.confluent.io/current/schema-registry/docs/config.html) overrides in the dictionary format. | `{}` |
+| `sslSecrets` | sslSecret definitions | `{}` see [values.yaml](values.yaml) for details |
 | `customEnv` | Custom environmental variables | `{}` |
 
 ### Port
@@ -147,7 +148,6 @@ The configuration parameters in this section control the resources requested and
 | `securityContext.runAsGroup` | All processes for the container will run with this primary group ID | 10001
 | `securityContext.fsGroup` | All processes for the container will run with this supplementary group ID | 10001
 | `securityContext.runAsNonRoot` | The kubelet will validate the image at runtime to make sure that it does not run as UID 0 (root) and won’t start the container if it does | true
-
 
 ### JMX Configuration
 

@@ -27,6 +27,23 @@ imagePullSecrets:
 ## Configuration Options can be found here: https://docs.confluent.io/current/schema-registry/docs/config.html
 configurationOverrides: {}
 
+## SSL configuration
+### Works by specifying a Secret resources called "ssl-config" where each key in `secureEnv` is translated to the
+# equivalent environment variable.
+# I.e: kafkastore.ssl.key.password is converted to SCHEMA_REGISTRY_KAFKASTORE_SSL_KEY_PASSWORD
+sslSecrets: {}
+#  name: ssl-config
+#  path: /mnt/certs
+#  secureEnv:
+#    kafkastore.ssl.keystore.password: keystore_password
+#    kafkastore.ssl.key.password: keystore_password
+#    kafkastore.ssl.truststore.password: truststore_password
+## SSLSecrets must be used in conjunction with the following configuration (adjust as necessary).
+#  configurationOverrides:
+#    kafkastore.security.protocol: SSL
+#    kafkastore.ssl.keystore.location: /mnt/certs/keystore
+#    kafkastore.ssl.truststore.location: /mnt/certs/truststore
+
 ## Additional env variables
 customEnv: {}
 
