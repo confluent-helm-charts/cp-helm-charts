@@ -163,10 +163,11 @@ The configuration parameters in this section control the resources requested and
 
 ### Running Custom Scripts
 
-| Parameter | Description | Default |
-| --------- | ----------- | ------- |
-| `customEnv.CUSTOM_SCRIPT_PATH` | Path to external bash script to run inside the container | see [values.yaml](values.yaml) for details |
-| `livenessProbe` | Requirement of `livenessProbe` depends on the custom script to be run  | see [values.yaml](values.yaml) for details |
+| Parameter                              | Description                                                                   | Default |
+|----------------------------------------|-------------------------------------------------------------------------------| ------- |
+| `customEnv.CUSTOM_SCRIPT_PATH`         | Path to external bash script to run inside the container                      | see [values.yaml](values.yaml) for details |
+| `customEnv.CUSTOM_SCRIPT_PATH_PRE_RUN` | Path to external bash script to run inside the container before kafka connect | see [values.yaml](values.yaml) for details |
+| `livenessProbe`                        | Requirement of `livenessProbe` depends on the custom script to be run         | see [values.yaml](values.yaml) for details |
 
 ### Deployment Topology
 
