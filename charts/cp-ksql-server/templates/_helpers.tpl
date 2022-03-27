@@ -36,8 +36,12 @@ Create a default fully qualified kafka headless name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
 {{- define "cp-ksql-server.cp-kafka-headless.fullname" -}}
+{{- if (index .Values.fullnameOverride) -}}
+{{- printf "%s-headless" (index .Values.fullnameOverride) | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
 {{- $name := "cp-kafka-headless" -}}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
 {{- end -}}
 
 {{/*
@@ -68,8 +72,12 @@ Create a default fully qualified schema registry name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
 {{- define "cp-ksql-server.cp-schema-registry.fullname" -}}
+{{- if (index .Values "cp-schema-registry" "fullnameOverride") -}}
+{{- printf "%s" (index .Values "cp-schema-registry" "fullnameOverride") | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
 {{- $name := default "cp-schema-registry" (index .Values "cp-schema-registry" "nameOverride") -}}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "cp-ksql-server.cp-schema-registry.service-name" -}}
