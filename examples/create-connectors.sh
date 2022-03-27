@@ -6,6 +6,7 @@ echo "Waiting for Kafka Connect to start listening on kafka-connect  "
 while :; do
     # Check if the connector endpoint is ready
     # If not check again
+
     # shellcheck disable=SC1083
     curl_status=$(curl -s -o /dev/null -w %{http_code} http://localhost:{{ .Values.servicePort }}/connectors)
     # shellcheck disable=SC2039
@@ -13,6 +14,7 @@ while :; do
     # shellcheck disable=SC3037
     echo -e $(date) "Kafka Connect listener HTTP state: $curl_status (waiting for 200)"
     # shellcheck disable=SC2086
+
     if [ $curl_status -eq 200 ]; then
         break
     fi

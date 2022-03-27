@@ -120,6 +120,14 @@ The configuration parameters in this section control the resources requested and
 | `imagePullSecrets`         | Secrets to be used for private registries.                                                                                                                                                               | see [values.yaml](values.yaml) for details |
 | `enableEnterpriseFeatures` | If this flag is set to `true`, Kafka image will be set to `confluentinc/cp-server` otherwise it will be set to `confluentinc/cp-kafka` (Community version). It can still be overridden in `values.yaml`. | `true`                                     |
 
+### Port
+
+| Parameter | Description | Default |
+| --------- | ----------- | ------- |
+| `service.type` | Kubernetes service type | `ClusterIP` |
+| `service.port` | The port on which the Kafka Connect will be available and serving requests. | `8083` |
+| `service.nodePort` | The nodePort port on which the Kafka Connect will be available and serving requests. |  |
+
 ### StatefulSet Configurations
 
 | Parameter | Description | Default |
