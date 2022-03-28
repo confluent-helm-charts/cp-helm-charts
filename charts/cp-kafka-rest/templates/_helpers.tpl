@@ -96,8 +96,8 @@ Form the Kafka URL. If Kafka is installed as part of this chart, use k8s service
 else use user-provided URL
 */}}
 {{- define "cp-kafka-rest.kafka.bootstrapServers" -}}
-{{- if (index .Values "cp-kafka" "bootstrapServers") -}}
-{{- printf "%s" (index .Values "cp-kafka" "bootstrapServers") -}}
+{{- if .Values.kafka.bootstrapServers -}}
+{{- .Values.kafka.bootstrapServers -}}
 {{- else -}}
 {{- printf "PLAINTEXT://%s:9092" (include "cp-kafka-rest.cp-kafka-headless.fullname" .) -}}
 {{- end -}}
