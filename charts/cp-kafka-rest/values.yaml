@@ -99,5 +99,5 @@ cp-zookeeper:
 cp-schema-registry:
   url: ""
 
-cp-kafka:
+kafka:
   bootstrapServers: ""
